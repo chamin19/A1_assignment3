@@ -2,8 +2,8 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: 
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: Camillia Amin 501071556 Section 1
+%%%%% NAME: Rudaba Syed Section 1
+%%%%% NAME: Mayra Mussarrat Section 1
 %
 % Add your interaction below

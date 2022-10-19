@@ -2,9 +2,9 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: 
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: Camillia Amin 501071556 Section 1
+%%%%% NAME: Rudaba Syed Section 1
+%%%%% NAME: Mayra Mussarrat Section 1
 %
 % Add the required atomic propositions and rules in the corresponding sections. 
 % If you put the propositions and rules in the wrong sections, you may lose marks.
