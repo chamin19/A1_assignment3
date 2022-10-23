@@ -7,3 +7,124 @@
 %%%%% NAME: Mayra Mussarrat Section 1
 %
 % Add your interaction below
+
+% ____________________________________________ crypt1.pl
+?- Start is cputime, solve([A, C, H, I, O, R, S, T, W]), End is cputime, Time is End - Start.
+Start = 860.296
+A = 7
+C = 3
+H = 0
+I = 6
+O = 4
+R = 9
+S = 2
+T = 1
+W = 8
+End = 899.625
+Time = 39.328999999999951
+Yes (39.33s cpu, solution 1, maybe more)
+No (53.69s cpu)
+
+?- print_solution([A, C, H, I, O, R, S, T, W]).
+A = 7
+C = 3
+H = 0
+I = 6
+O = 4
+R = 9
+S = 2
+T = 1
+W = 8
+Yes (44.83s cpu, solution 1, maybe more)
+No (59.97s cpu)
+
+A = 7    |       21978
+C = 3    |    *     14
+H = 0    |      ------
+I = 6    |       87912
+O = 4    |    + 21978 
+R = 9    |     -------
+S = 2    |      307692
+T = 1    |    
+W = 8    |    
+
+
+% ____________________________________________ crypt2.pl
+
+
+    CA1 is (W*O) // 10,
+    CA10 is (A*O + CA1) // 10, 
+    CA100 is (R*O + CA10) // 10, 
+    CA1000 is (T*O + CA100) // 10,
+    CA10000 is (S*O + CA1000) // 10,
+    CB1 is (W*T) // 10,
+    CB10 is (A*T + CB1) // 10, 
+    CB100 is (R*T + CB10) // 10, 
+    CB1000 is (T*T + CB100) // 10,
+    CB10000 is (S*T + CB1000) // 10,
+    CC1 is (T+W) // 10, 
+    CC10 is (R+A + CC1) // 10, 
+    CC100 is (A+R + CC10) // 10, 
+    CC1000 is (W+T + CC100) // 10,
+
+
+    S is (W*O) mod 10, CA1 is (W*O) // 10,
+    T is (A*O + CA1) mod 10, CA10 is (A*O + CA1) // 10,
+    W is (W*T) mod 10, CB1 is (W*T) // 10,
+
+    R is (T + W) mod 10, CC1 is (T+W) // 10, 
+    I is (((R*O + CA10) mod 10) + ((A*T + CB1) mod 10) + CC1) mod 10, 
+    CA100 is (R*O + CA10) // 10, CB10 is (A*T + CB1) // 10, CC10 is (R+A + CC1) // 10, 
+    A is (((T*O + CA100) mod 10) + ((R*T + CB10) mod 10) + CC10) mod 10, 
+    CA1000 is (T*O + CA100) // 10, CB100 is (R*T + CB10) // 10, CC100 is (A+R + CC10) // 10, 
+    H is (((S*O + CA1000) mod 10) + ((T*T + CB100) mod 10) + CC100) mod 10, 
+    CA10000 is (S*O + CA1000) // 10, CB1000 is (T*T + CB100) // 10, CC1000 is (W+T + CC100) // 10, 
+    C is (CA10000 + ((S*T + CB1000) mod 10) + CC1000) mod 10,
+
+    _______________________
+        CA1 is (W*O) // 10,
+    CA10 is (A*O + CA1) // 10, 
+    CA100 is (R*O + CA10) // 10, 
+    CA1000 is (T*O + CA100) // 10,
+    CA10000 is (S*O + CA1000) // 10,
+    CB1 is (W*T) // 10,
+    CB10 is (A*T + CB1) // 10, 
+    CB100 is (R*T + CB10) // 10, 
+    CB1000 is (T*T + CB100) // 10,
+    CB10000 is (S*T + CB1000) // 10,
+    CC1 is (T+W) // 10, 
+    CC10 is (R+A + CC1) // 10, 
+    CC100 is (A+R + CC10) // 10, 
+    CC1000 is (W+T + CC100) // 10,
+    
+    S is (W*O) mod 10, write(S),
+    T is (A*O + CA1) mod 10, write(T),
+    W is (S*O + CA1000) mod 10, write(W),
+
+    R is (T + W) mod 10, write(R),
+    I is (((R*O + CA10) mod 10) + ((A*T + CB1) mod 10) + CC1) mod 10, 
+    A is (((T*O + CA100) mod 10) + ((R*T + CB10) mod 10) + CC10) mod 10, 
+    H is (((S*O + CA1000) mod 10) + ((T*T + CB100) mod 10) + CC100) mod 10, 
+    C is (CA10000 + ((S*T + CB1000) mod 10) + CC1000) mod 10,
+
+
+
+
+    _______________________    % -------------------
+    S is (W*O) mod 10, CA1 is (W*O) // 10, 
+    T is (A*O + CA1) mod 10, CA10 is (A*O + CA1) // 10, 
+    R is (R*O + CA10) mod 10, CA100 is (R*O + CA10) // 10, 
+    A is (T*O + CA100) mod 10, CA1000 is (T*O + CA100) // 10,
+    W is (S*O + CA1000) mod 10, CA10000 is (S*O + CA1000) // 10,
+
+%    W is (W*T) mod 10, CB1 is (W*T) // 10, 
+%    A is (A*T + CB1) mod 10, CB10 is (A*T + CB1) // 10, 
+%    R is (R*T + CB10) mod 10, CB100 is (R*T + CB10) // 10, 
+%    T is (T*T + CB100) mod 10, CB1000 is (T*T + CB100) // 10,
+%    S is (S*T + CB1000) mod 10, CB10000 is (S*T + CB1000) // 10,
+
+%    R is (W+T) mod 10, CC1 is (W+T) // 10, 
+%    I is (R+A + CC1) mod 10, CC10 is (R+A + CC1) // 10, 
+%    A is (A+R + CC10) mod 10, CC100 is (A+R + CC10) // 10, 
+%    H is (W+T + CC100) mod 10, CC1000 is (W+T + CC100) // 10,
+%    C is (CA1000+S + CC1000) mod 10, CC10000 is (S*T + CC1000) // 10,
