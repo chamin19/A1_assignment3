@@ -8,7 +8,7 @@
 %
 % Add your interaction below
 
-% ____________________________________________ crypt1.pl
+% ___________________________________________________________________________________ crypt1.pl
 ?- Start is cputime, solve([A, C, H, I, O, R, S, T, W]), End is cputime, Time is End - Start.
 Start = 860.296
 A = 7
@@ -24,6 +24,8 @@ End = 899.625
 Time = 39.328999999999951
 Yes (39.33s cpu, solution 1, maybe more)
 No (53.69s cpu)
+
+
 
 ?- print_solution([A, C, H, I, O, R, S, T, W]).
 A = 7
@@ -49,6 +51,43 @@ T = 1    |
 W = 8    |    
 
 
-% ____________________________________________ crypt2.pl
+% ___________________________________________________________________________________ crypt2.pl
+?- Start is cputime, solve([A, C, H, I, O, R, S, T, W]), End is cputime, Time is End - Start.
+Start = 43.375
+A = 7
+C = 3
+H = 0
+I = 6
+O = 4
+R = 9
+S = 2
+T = 1
+W = 8
+End = 43.375
+Time = 0.0
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.02s cpu)
 
 
+?- print_solution([A, C, H, I, O, R, S, T, W]).
+A = 7
+C = 3
+H = 0
+I = 6
+O = 4
+R = 9
+S = 2
+T = 1
+W = 8
+Yes (0.02s cpu, solution 1, maybe more)
+No (0.06s cpu)
+
+A = 7    |       21978
+C = 3    |    *     14
+H = 0    |      ------
+I = 6    |       87912
+O = 4    |    + 21978 
+R = 9    |     -------
+S = 2    |      307692
+T = 1    |    
+W = 8    |    

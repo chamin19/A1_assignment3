@@ -31,36 +31,33 @@ memberList(N,[M|L]) :- memberList(N,L).
 solve([A,C,H,I,O,R,S,T,W]) :-
     % generate
     dig(O), dig(W),  W > 0, dig(S), S > 0,
-
-
-    dig(A), dig(C), dig(H), dig(I), dig(O), dig(R), 
-    dig(T),  dig(W2), dig(A2), dig(R2), 
-    dig(T2), dig(S2), dig(R3), dig(A3), 
-
-    C > 0, T > 0,
-    S=S2, T=T2, R=R2, R=R3, A=A2, A=A3, W=W2,
-
-    % test
     S is (W*O) mod 10, CA1 is ((W*O) // 10), 
-    T is (A*O + CA1) mod 10, CA10 is ((A*O + CA1) // 10), 
-    R is (R*O + CA10) mod 10, CA100 is ((R*O + CA10) // 10), 
-    A is (T*O + CA100) mod 10, CA1000 is ((T*O + CA100) // 10),
-    W is (S*O + CA1000) mod 10, CA10000 is ((S*O + CA1000) // 10),
-    
-    W2 is (W*T) mod 10, CB1 is (W*T) // 10, 
-    A2 is (A*T + CB1) mod 10, CB10 is (A*T + CB1) // 10, 
-    R2 is (R*T + CB10) mod 10, CB100 is (R*T + CB10) // 10, 
-    T2 is (T*T + CB100) mod 10, CB1000 is (T*T + CB100) // 10,
-    S2 is (S*T + CB1000) mod 10,
 
-    R3 is (W+T) mod 10, CC1 is (W+T) // 10, 
-    I is (R+A + CC1) mod 10, CC10 is (R+A + CC1) // 10, 
-    A3 is (A+R + CC10) mod 10, CC100 is (A+R + CC10) // 10, 
-    H is (W+T + CC100) mod 10, CC1000 is (W+T + CC100) // 10,
-    C is (CA1000 + S + CC1000) mod 10,
+    dig(A), dig(T), T > 0,
+    T is (A*O + CA1) mod 10, CA10 is ((A*O + CA1) // 10),
+
+    dig(R), 
+    R is (R*O + CA10) mod 10, CA100 is ((R*O + CA10) // 10),
+    A is (T*O + CA100) mod 10, CA1000 is ((T*O + CA100) // 10),
+
+    W is (S*O + CA1000) mod 10, CA10000 is ((S*O + CA1000) // 10),
+    W2 is (W*T) mod 10, CB1 is (W*T) // 10, 
+    W=W2,
+
+    A2 is (A*T + CB1) mod 10, CB10 is (A*T + CB1) // 10, A=A2,
+    R2 is (R*T + CB10) mod 10, CB100 is (R*T + CB10) // 10, R=R2,
+
+    T2 is (T*T + CB100) mod 10, CB1000 is (T*T + CB100) // 10, T=T2,
+    S2 is (S*T + CB1000) mod 10, S=S2,
+
+    R3 is (W+T) mod 10, CC1 is (W+T) // 10, R=R3,
+    dig(I), I is (R+A + CC1) mod 10, CC10 is (R+A + CC1) // 10, 
+    A3 is (A+R + CC10) mod 10, CC100 is (A+R + CC10) // 10, A=A3, 
+
+    dig(H), H is (W+T + CC100) mod 10, CC1000 is (W+T + CC100) // 10,
+    dig(C), C > 0, C is (CA1000 + S + CC1000) mod 10,
 
     all_diff([A,C,H,I,O,R,S,T,W]).
-
 
 %%%%% RULE: print_solution ( ListOfVars )
 %  Add rules the prints your solution in a readable format
