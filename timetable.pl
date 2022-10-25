@@ -30,15 +30,21 @@ notMember([H|T],L) :- \+ member(H,L), notMember(T,L).
 
 getDay([D1,D2,D3],D1,D2,D3). 
 
+
 %%%%% RULE: solve( ListOfVars )
 % Add the rules defining your solve program
 % MAKE SURE IT TAKES A LIST AS INPUT, SUCH THAT THAT LIST IS CONTAINS ALL VARIABLES
 
 solve([Dance,Art,Math,Compsci,Lunch,Mon,Wed,Fri]) :- 
-dance(Dance), art(Art), math(Math), compsci(Compsci), lunch(Lunch),
+lunch(Lunch), compsci(Compsci), 
+notMember(Compsci,Lunch),
+art(Art), 
+notMember(Compsci,Art), notMember(Art,Lunch), 
+math(Math), 
 notMember(Math,Art), notMember(Math,Compsci), notMember(Math,Lunch), 
-notMember(Compsci,Art), notMember(Compsci,Lunch), 
-notMember(Art,Lunch), notMember(Dance, Lunch).
+dance(Dance), 
+notMember(Dance, Lunch).
+
 
 %%%%% RULE: print_solution ( ListOfVars )
 %  Add rules the prints your solution in a readable format
@@ -53,13 +59,15 @@ getDay(Lunch,Lunch1,Lunch2,Lunch3),
 getDay(Dance,Dance1,Dance2,Dance3), 
 getDay(Compsci,Compsci1,Compsci2,Compsci3),
 
-write(' Subject          |  Hour 1   |  Hour 2   |  Hour 3  '), nl,
-write('------------------|-----------|-----------|------------'), nl, 
-write(' Art              | '), write(Art1), write(' | '), write(Art2), write(' | '), write(Art3), nl,
-write(' Math             | '), write(Math1), write('  | '), write(Math2), write('  | '), write(Math3), nl,
-write(' Computer Science | '), write(Compsci1), write(' | '), write(Compsci2), write(' | '), write(Compsci3), nl,
-write(' Dance            | '), write(Dance1), write('  | '), write(Dance2), write('  | '), write(Dance3), nl,
-write(' Lunch            | '), write(Lunch1), write('  | '), write(Lunch2), write('  | '), write(Lunch3), nl.
+nl,
+write('     Subject      |   Hour 1   |   Hour 2   |   Hour 3  '), nl,
+write('                  | [day,time] | [day,time] | [day,time] '), nl,
+write('------------------|------------|------------|-------------'), nl, 
+write(' Art              | '), write(Art1), write('  | '), write(Art2), write('  | '), write(Art3), nl,
+write(' Math             | '), write(Math1), write('   | '), write(Math2), write('   | '), write(Math3), nl,
+write(' Computer Science | '), write(Compsci1), write('  | '), write(Compsci2), write('  | '), write(Compsci3), nl,
+write(' Dance            | '), write(Dance1), write('   | '), write(Dance2), write('   | '), write(Dance3), nl,
+write(' Lunch            | '), write(Lunch1), write('   | '), write(Lunch2), write('   | '), write(Lunch3), nl.
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
