@@ -26,7 +26,10 @@ lunch([[mon,12],[wed,1],[fri,1]]). lunch([[mon,1],[wed,12],[fri,1]]). lunch([[mo
 %%%%% HELPER PREDICATES
 % Put any helper predicates here (leave empty if you do not have any)
 notMember([],L).
-notMember([H|T],L) :- \+ member(H,L), notMember(T,L).
+notMember([H|T],L) :- not memberList(H,L), notMember(T,L).
+
+memberList(N,[N|L]).
+memberList(N,[M|L]) :- memberList(N,L).
 
 getDay([D1,D2,D3],D1,D2,D3). 
 
