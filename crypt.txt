@@ -93,4 +93,3 @@ T = 1    |
 W = 8    |    
 
 
-getDay(Lunch,Lunch1,Lunch2,Lunch3),
