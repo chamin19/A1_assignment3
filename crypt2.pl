@@ -29,33 +29,68 @@ memberList(N,[M|L]) :- memberList(N,L).
 % Add the rules defining your solve program
 % MAKE SURE IT TAKES A LIST AS INPUT, SUCH THAT THAT LIST IS CONTAINS ALL VARIABLES
 solve([A,C,H,I,O,R,S,T,W]) :-
-    % generate
+
+    % O and W must be declared first as the calculations required to find S and CA1 
+    % depend on O and W, which are needed to calculate all of the following digits and
+    % carry digits. O and W are interdependent. In most cases, the carry digits must 
+    % be calculated in the line as the regular digits due to order of dependency.
+
     dig(O), dig(W),  W > 0, dig(S), S > 0,
     S is (W*O) mod 10, CA1 is ((W*O) // 10), 
 
+    % The calculations of T and CA10 depend on CA1, so A and T must be declared next. 
+    % O has already been declared
     dig(A), dig(T), T > 0,
     T is (A*O + CA1) mod 10, CA10 is ((A*O + CA1) // 10),
 
+    % The calculations of R and CA100 depend on CA10 and ), which has already been declared
+    % A has already been declared as a digit, and its calculation depends on T and CA100 
     dig(R), 
     R is (R*O + CA10) mod 10, CA100 is ((R*O + CA10) // 10),
     A is (T*O + CA100) mod 10, CA1000 is ((T*O + CA100) // 10),
 
-    W is (S*O + CA1000) mod 10, CA10000 is ((S*O + CA1000) // 10),
+    % W has already been declared, but depends on CA1000, so it must come after CA1000
+    % We declare W2 immediately after as it must be equal to W
+    W is (S*O + CA1000) mod 10, 
     W2 is (W*T) mod 10, CB1 is (W*T) // 10, 
     W=W2,
 
-    A2 is (A*T + CB1) mod 10, CB10 is (A*T + CB1) // 10, A=A2,
-    R2 is (R*T + CB10) mod 10, CB100 is (R*T + CB10) // 10, R=R2,
+    % Dependency for carry digits required for the second set of multiplications
+    % CB1000 -> CB100 -> CB10 -> CB1
+    % A2 and CB10 depend on A,T and CB1, and must ensure that A = A2
+    A2 is (A*T + CB1) mod 10, A=A2, CB10 is (A*T + CB1) // 10, 
 
-    T2 is (T*T + CB100) mod 10, CB1000 is (T*T + CB100) // 10, T=T2,
+    % R2 and CB100 depend on R,T and CB10, and must ensure that R = R2
+    R2 is (R*T + CB10) mod 10, R=R2, CB100 is (R*T + CB10) // 10, 
+
+    % T2 and CB1000 depend on T and CB100, and must ensure that T = T2
+    T2 is (T*T + CB100) mod 10, T=T2, CB1000 is (T*T + CB100) // 10, 
+
+    % S2 depends on S,T and CB1000, and must ensure that S = S2
     S2 is (S*T + CB1000) mod 10, S=S2,
 
-    R3 is (W+T) mod 10, CC1 is (W+T) // 10, R=R3,
+    % Must ensure that R=R3 
+    R3 is (W+T) mod 10, R=R3,
+
+    % CC1 depends on W,T and CB1000, and CC10, CC100, CC1000 depend on CC1, 
+    % so CC1 must come first in the 3rd set of calculations 
+    CC1 is (W+T) // 10, 
+
+    % I is not depended upon by any other digits and unncessary until the 
+    % addition calculations in the last stage
     dig(I), I is (R+A + CC1) mod 10, CC10 is (R+A + CC1) // 10, 
     A3 is (A+R + CC10) mod 10, CC100 is (A+R + CC10) // 10, A=A3, 
 
+    % H is similarly not depended upon by other digits thus comes second to last
     dig(H), H is (W+T + CC100) mod 10, CC1000 is (W+T + CC100) // 10,
-    dig(C), C > 0, C is (CA1000 + S + CC1000) mod 10,
+
+    % We reserved the CA10000 for the last carry digit calculation as it is only depended
+    % upon by one digit (C)
+    CA10000 is ((S*O + CA1000) // 10),
+    
+    % C is the last digit to be calculated in the equation and depends on CC1000 and the
+    % carry digit from the first set of multiplication operations (CA10000)  
+    dig(C), C > 0, C is (CA10000 + S + CC1000) mod 10,
 
     all_diff([A,C,H,I,O,R,S,T,W]).
 
