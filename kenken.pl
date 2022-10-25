@@ -76,6 +76,7 @@ distinct_values(Row1), distinct_values(Row2), distinct_values(Row3), distinct_va
 %%%%% RULE: print_solution ( ListOfVars )
 %  Add rules the prints your solution in a readable format
 % MAKE SURE IT TAKES A LIST AS INPUT, SUCH THAT THAT LIST IS CONTAINS ALL VARIABLES
+
 print_solution([Row1, Row2, Row3, Row4]) :-
 solve([Row1, Row2, Row3, Row4]),
 write(Row1), nl,

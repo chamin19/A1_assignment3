@@ -38,7 +38,7 @@ getDay([D1,D2,D3],D1,D2,D3).
 % Add the rules defining your solve program
 % MAKE SURE IT TAKES A LIST AS INPUT, SUCH THAT THAT LIST IS CONTAINS ALL VARIABLES
 
-solve([Dance,Art,Math,Compsci,Lunch,Mon,Wed,Fri]) :- 
+solve([Dance,Art,Math,Compsci,Lunch]) :- 
 lunch(Lunch), compsci(Compsci), 
 notMember(Compsci,Lunch),
 art(Art), 
@@ -53,8 +53,8 @@ notMember(Dance, Lunch).
 %  Add rules the prints your solution in a readable format
 % MAKE SURE IT TAKES A LIST AS INPUT, SUCH THAT THAT LIST IS CONTAINS ALL VARIABLES
 
-print_solution([Dance,Art,Math,Compsci,Lunch,Mon,Wed,Fri]) :- 
-solve([Dance,Art,Math,Compsci,Lunch,Mon,Wed,Fri]), 
+print_solution([Dance,Art,Math,Compsci,Lunch]) :- 
+solve([Dance,Art,Math,Compsci,Lunch]), 
 
 getDay(Art,Art1,Art2,Art3), 
 getDay(Math,Math1,Math2,Math3), 

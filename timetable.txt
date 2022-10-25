@@ -7,34 +7,29 @@
 %%%%% NAME: Mayra Mussarrat Section 1
 %
 % Add your interaction below
-?- Start is cputime, solve([Dance, Art, Math, Compsci, Lunch, Mon, Wed, Fri]), End is cputime, Time is End - Start.
-Start = 2.25
+
+?- Start is cputime, solve([Dance, Art, Math, Compsci, Lunch]), End is cputime, Time is End - Start.
+Start = 1.671
 Dance = [[fri, 1], [fri, 2], [fri, 3]]
 Art = [[mon, 10], [wed, 10], [fri, 10]]
 Math = [[mon, 2], [wed, 2], [fri, 11]]
 Compsci = [[mon, 12], [wed, 12], [wed, 3]]
 Lunch = [[mon, 1], [wed, 1], [fri, 12]]
-Mon = Mon
-Wed = Wed
-Fri = Fri
-End = 2.25
+End = 1.671
 Time = 0.0
 Yes (0.00s cpu, solution 1, maybe more)
 No (0.00s cpu)
 
 
 
-?- print_solution([Dance, Art, Math, Compsci, Lunch, Mon, Wed, Fri]).
+?- print_solution([Dance, Art, Math, Compsci, Lunch]).
 Dance = [[fri, 1], [fri, 2], [fri, 3]]
 Art = [[mon, 10], [wed, 10], [fri, 10]]
 Math = [[mon, 2], [wed, 2], [fri, 11]]
 Compsci = [[mon, 12], [wed, 12], [wed, 3]]
 Lunch = [[mon, 1], [wed, 1], [fri, 12]]
-Mon = Mon
-Wed = Wed
-Fri = Fri
 Yes (0.00s cpu, solution 1, maybe more)
-No (0.00s cpu)
+No (0.02s cpu)
 
      Subject      |   Hour 1   |   Hour 2   |   Hour 3  
                   | [day,time] | [day,time] | [day,time] 
