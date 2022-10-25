@@ -18,6 +18,7 @@ dig(1). dig(2). dig(3). dig(4).
 
 %%%%% HELPER PREDICATES
 % Put any helper predicates here (leave empty if you do not have any
+% splits the number and operator (not sure if it's correct)
 split_num_op(R, X, Y):- split_string(R, '\s', '\s', [H,T]), atom_number(H, X), Y=T.
 
 uniq(W,X,Y,Z) :- dig(W), dig(X), \+ W=X,
