@@ -2,7 +2,7 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: Camillia Amin 501071556 Section 1
+%%%%% NAME: Camillia Amin Section 1
 %%%%% NAME: Rudaba Syed Section 1
 %%%%% NAME: Mayra Mussarrat Section 1
 %
