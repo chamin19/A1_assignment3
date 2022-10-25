@@ -59,6 +59,7 @@ solve([A,C,H,I,O,R,S,T,W]) :-
 
     all_diff([A,C,H,I,O,R,S,T,W]).
 
+
 %%%%% RULE: print_solution ( ListOfVars )
 %  Add rules the prints your solution in a readable format
 % MAKE SURE IT TAKES A LIST AS INPUT, SUCH THAT THAT LIST IS CONTAINS ALL VARIABLES
