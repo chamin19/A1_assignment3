@@ -1,13 +1,3 @@
-% Enter the names of your group members below.
-% If you only have 2 group members, leave the last space blank
-%
-%%%%%
-%%%%% NAME: Camillia Amin Section 1
-%%%%% NAME: Rudaba Syed Section 1
-%%%%% NAME: Mayra Mussarrat Section 1
-%
-% Add your interaction below
-
 ?- Start is cputime, solve([Dance, Art, Math, Compsci, Lunch]), End is cputime, Time is End - Start.
 Start = 1.671
 Dance = [[fri, 1], [fri, 2], [fri, 3]]
@@ -19,7 +9,6 @@ End = 1.671
 Time = 0.0
 Yes (0.00s cpu, solution 1, maybe more)
 No (0.00s cpu)
-
 
 
 ?- print_solution([Dance, Art, Math, Compsci, Lunch]).

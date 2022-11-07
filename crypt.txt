@@ -1,13 +1,3 @@
-% Enter the names of your group members below.
-% If you only have 2 group members, leave the last space blank
-%
-%%%%%
-%%%%% NAME: Camillia Amin Section 1
-%%%%% NAME: Rudaba Syed Section 1
-%%%%% NAME: Mayra Mussarrat Section 1
-%
-% Add your interaction below
-
 % ___________________________________________________________________________________ crypt1.pl
 ?- Start is cputime, solve([A, C, H, I, O, R, S, T, W]), End is cputime, Time is End - Start.
 Start = 860.296
@@ -91,5 +81,3 @@ R = 9    |     -------
 S = 2    |      307692
 T = 1    |    
 W = 8    |    
-
-
